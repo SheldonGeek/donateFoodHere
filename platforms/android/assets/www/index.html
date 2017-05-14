@@ -1,0 +1,86 @@
+<html ng-app="ionic.example">
+  <head>
+  <script data-ionic="inject">
+    (function(w){var i=w.Ionic=w.Ionic||{};i.version='3.2.1';i.angular='4.1.0';i.staticDir='build/';})(window);
+  </script>
+    <meta charset="utf-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Donate Food Here</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+
+    <link href="ionic.css" rel="stylesheet">
+    <script src="ionic.bundle.js"></script>
+
+
+    <link href="map.css" rel="stylesheet">
+    <script src="map.js"></script>
+    <!-- google maps javascript -->
+    <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDqfC_yu9fuV6Udannwx3AWidRYWhEwjs4&sensor=true"></script>
+
+  </head>
+
+  <body ng-controller="MapCtrl">
+    <div ng-show="mapView">
+    <ion-header-bar class="bar-dark" >
+      <h1 class="title">FeedMore Drop Boxes</h1>
+      <a ng-click="showListView()" class="button"><ion-icon ios="ios-list" md="md-list"></ion-icon>List View</a>
+    </ion-header-bar>
+    <ion-content>
+      <div id="map" data-tap-disabled="true"></div>
+    </ion-content>
+    <ion-footer-bar class="bar-dark">
+      <a ng-click="centerOnMe()" class="button button-icon icon ion-navigate">Find Me</a>
+      <a ng-click="aboutMe()" class="button button-icon icon ion-star">About Me</a>
+    </ion-footer-bar>
+  </div>
+
+
+
+<!-- List VIew -->
+   <div ng-hide="mapView">
+     <ion-header-bar class="bar-dark" >
+
+   <h1 class="title">FeedMore Drop Boxes</h1>
+   <div class="buttons">
+     <a ng-click="showMapView()" class="button"><ion-icon ios="ios-list" md="md-list"></ion-icon>Map View</a>
+
+   </div>
+ </ion-header-bar>
+
+ <ion-content>
+
+   <!-- The list directive is great, but be sure to also checkout the collection repeat directive when scrolling through large lists -->
+
+   <ion-list show-delete="data.showDelete" show-reorder="data.showReorder">
+
+     <ion-item ng-repeat="item in items"
+               item="item"
+               href="#/item/{{item.id}}" class="item-remove-animate">
+       {{ item.id }}
+       <ion-delete-button class="ion-minus-circled"
+                          ng-click="onItemDelete(item)">
+       </ion-delete-button>
+       <ion-option-button class="button-assertive"
+                          ng-click="edit(item)">
+         Edit
+       </ion-option-button>
+       <ion-option-button class="button-calm"
+                          ng-click="share(item)">
+         Share
+       </ion-option-button>
+       <ion-reorder-button class="ion-navicon" on-reorder="moveItem(item, $fromIndex, $toIndex)"></ion-reorder-button>
+     </ion-item>
+
+   </ion-list>
+
+ </ion-content>
+ <ion-footer-bar class="bar-dark">
+   <a ng-click="#" class="button button-icon"></a>
+   <a ng-click="aboutMe()" class="button button-icon icon ion-star">About Me</a>
+ </ion-footer-bar>
+
+   </div>
+
+  </body>
+</html>
