@@ -30,11 +30,10 @@
       <div id="map" data-tap-disabled="true"></div>
     </ion-content>
     <ion-footer-bar class="bar-dark">
-      <a ng-click="centerOnMe()" class="button button-icon icon ion-navigate">Find Me</a>
-      <a ng-click="aboutMe()" class="button button-icon icon ion-star">About Me</a>
+      <a ng-click="neededFood()" class="button">&hearts;Most Needed Items</a>
+      <a ng-click="aboutMe()" class="button">&#9733;About Me</a>
     </ion-footer-bar>
   </div>
-
 
 
 <!-- List VIew -->
@@ -56,7 +55,7 @@
 
      <ion-item ng-repeat="item in items"
                item="item"
-               href="#/item/{{item.id}}" class="item-remove-animate">
+               href="{{item.url}}" class="item-remove-animate">
        {{ item.id }}
        <ion-delete-button class="ion-minus-circled"
                           ng-click="onItemDelete(item)">
@@ -76,8 +75,8 @@
 
  </ion-content>
  <ion-footer-bar class="bar-dark">
-   <a ng-click="#" class="button button-icon"></a>
-   <a ng-click="aboutMe()" class="button button-icon icon ion-star">About Me</a>
+   <a ng-click="neededFood()" class="button">&hearts;Most Needed Items</a>
+   <a ng-click="aboutMe()" class="button">&#9733;About Me</a>
  </ion-footer-bar>
 
    </div>
